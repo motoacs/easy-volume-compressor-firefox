@@ -1,0 +1,37 @@
+{
+  "name": "easy-volume-compressor-firefox",
+  "version": "1.0.0",
+  "description": "A Firefox add-on that normalizes video volume with a built-in compressor for a consistent audio experience.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "web-ext run --source-dir ./",
+    "package": "web-ext build --source-dir ./",
+    "dev": "npm run build && web-ext run --source-dir ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://motoacs@github.com/motoacs/easy-volume-compressor-firefox.git"
+  },
+  "keywords": [
+    "firefox-addon",
+    "audio",
+    "compressor",
+    "volume"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/motoacs/easy-volume-compressor-firefox/issues"
+  },
+  "homepage": "https://github.com/motoacs/easy-volume-compressor-firefox#readme",
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^120.0.4",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "web-ext": "^8.4.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}

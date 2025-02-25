@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Easy Volume Compressor",
+  "version": "1.0.0",
+  "description": "A Firefox add-on that normalizes video volume with a built-in compressor for a consistent audio experience.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "permissions": [
+    "storage",
+    "<all_urls>",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    },
+    "default_title": "Easy Volume Compressor",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": ["dist/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dist/content.js"]
+    }
+  ]
+}
