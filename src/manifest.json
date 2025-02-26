@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Easy Volume Compressor",
+  "version": "1.0.0",
+  "description": "Compresses and equalizes audio volume across all media elements in Firefox",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "<all_urls>"
+  ],
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    },
+    "default_title": "Easy Volume Compressor",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
