@@ -198,13 +198,27 @@ button:active {
   margin: 10px 0;
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--border-color);
 }
 
 .meter-bar {
   height: 100%;
-  background: linear-gradient(to right, #4CAF50, #FFEB3B, #FF5722);
+  background-color: #4CAF50;
   width: 0;
   transition: width 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.level-text {
+  position: absolute;
+  right: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
 }
 
 .meter-scale {
@@ -213,8 +227,7 @@ button:active {
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
+  pointer-events: none;
 }
 
 .meter-mark {
@@ -245,4 +258,92 @@ button:active {
   color: #666;
   margin-bottom: 10px;
   font-style: italic;
+}
+
+.meters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.level-meter {
+  width: 100%;
+  height: 24px;
+  background-color: var(--bg-color);
+  border-radius: 3px;
+  margin: 5px 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.meter-bar {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 0;
+  transition: width 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.reduction-meter {
+  width: 100%;
+  height: 24px;
+  background-color: var(--bg-color);
+  border-radius: 3px;
+  margin: 5px 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.reduction-bar {
+  height: 100%;
+  background-color: #f39c12;
+  width: 0;
+  transition: width 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Changed to flex-start for proper text alignment */
+  position: absolute;
+  right: 0; /* Position from right instead of left */
+}
+
+.level-text, .reduction-text {
+  position: absolute;
+  right: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+}
+
+.meter-scale, .reduction-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.meter-mark, .reduction-mark {
+  position: absolute;
+  height: 6px;
+  width: 1px;
+  background-color: rgba(0,0,0,0.3);
+  bottom: 0;
+}
+
+.meter-label, .reduction-label {
+  position: absolute;
+  font-size: 8px;
+  color: rgba(0,0,0,0.5);
+  bottom: -15px;
+}
+
+.meter-spacer {
+  height: 1px;
 }
