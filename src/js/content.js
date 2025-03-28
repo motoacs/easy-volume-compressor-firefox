@@ -17,12 +17,10 @@ class EasyVolumeCompressor {
     this.isMonitoringLevel = false;
     this.isPopupOpen = false;
 
-    // Initialize when settings are received
-    this.getSettings().then(() => {
-      this.initialize();
-    });
+    // Request initial settings from background script
+    this.requestInitialSettings();
 
-    // Listen for settings updates from popup
+    // Listen for messages from background or popup
     browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message.type === 'SETTINGS_UPDATED') {
         this.settings = message.settings;
@@ -36,21 +34,40 @@ class EasyVolumeCompressor {
         this.stopLevelMonitoring();
         sendResponse({ success: true });
       }
-      return true; // Required for async response
+      // Indicate that the response function will be called asynchronously
+      // only if we intend to send a response from this listener.
+      // For START/STOP monitoring, we do send a response.
+      if (message.type === 'START_LEVEL_MONITORING' || message.type === 'STOP_LEVEL_MONITORING') {
+          return true;
+      }
+      // For SETTINGS_UPDATED, we don't send a response back.
     });
   }
 
-  // Get settings from background script
-  async getSettings() {
-    return new Promise((resolve) => {
-      browser.runtime.sendMessage({ type: 'GET_SETTINGS' }).then(response => {
-        this.settings = response.settings;
-        resolve(this.settings);
-      });
-    });
+  // Request initial settings from background script
+  async requestInitialSettings() {
+      try {
+          console.log("Requesting initial settings...");
+          const response = await browser.runtime.sendMessage({ type: 'REQUEST_INITIAL_SETTINGS' });
+          if (response && response.settings) {
+              this.settings = response.settings;
+              console.log("Received initial settings:", this.settings);
+              this.initialize(); // Initialize after receiving settings
+          } else {
+              console.error("Failed to get initial settings, using defaults.", response);
+              this.settings = { ...DEFAULT_SETTINGS }; // Fallback to defaults
+              this.initialize();
+          }
+      } catch (error) {
+          console.error("Error requesting initial settings:", error);
+          // Fallback to defaults if background script is unavailable or throws error
+          this.settings = { ...DEFAULT_SETTINGS };
+          this.initialize();
+      }
   }
 
-  // Initialize the compressor
+
+  // Initialize the compressor (should only be called after settings are loaded)
   initialize() {
     if (this.initialized) return;
 
