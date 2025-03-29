@@ -1,4 +1,4 @@
-npm run build# Easy Volume Compressor for Firefox
+# Easy Volume Compressor for Firefox
 
 A Firefox addon that compresses and equalizes audio volume across all media elements to provide a consistent listening experience.
 

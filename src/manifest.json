@@ -1,18 +1,24 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Easy Volume Compressor",
   "version": "1.0.0",
   "description": "Compresses and equalizes audio volume across all media elements in Firefox",
+  "homepage_url": "https://github.com/motoacs/easy-volume-compressor-firefox",
+  "developer": {
+      "name": "motoacs",
+      "url": "https://github.com/motoacs"
+  },
   "icons": {
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png"
   },
   "permissions": [
-    "storage",
-    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
     "<all_urls>"
   ],
-  "browser_action": {
+  "action": {
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png"
@@ -21,7 +27,7 @@
     "default_popup": "popup/popup.html"
   },
   "background": {
-    "scripts": ["js/background.js"]
+    "scripts": ["js/background.js"] 
   },
   "content_scripts": [
     {
@@ -29,5 +35,11 @@
       "js": ["js/content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{deda44b0-c5c7-440b-a70a-f97248ce2e2f}",
+      "strict_min_version": "109.0"
+    }
+  }
 }
