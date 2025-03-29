@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Volume Compressor</title>
+  <link rel="stylesheet" href="../css/popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Easy Volume Compressor</h1>
+
+    <div class="domain-info" id="domain-info">
+      Settings for current site
+    </div>
+
+    <div class="power-switch">
+      <span>Enable Compression</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="enable-switch" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="settings-group">
+      <div class="form-group">
+        <label for="threshold">Threshold (dB)</label>
+        <div class="slider-control">
+          <input type="range" id="threshold" min="-60" max="0" step="1" value="-20">
+          <span class="slider-value" id="threshold-value">-20 dB</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ratio">Ratio</label>
+        <div class="slider-control">
+          <input type="range" id="ratio" min="1" max="20" step="0.5" value="4">
+          <span class="slider-value" id="ratio-value">4:1</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="attack">Attack (ms)</label>
+        <div class="slider-control">
+          <input type="range" id="attack" min="1" max="100" step="1" value="3">
+          <span class="slider-value" id="attack-value">3 ms</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="release">Release (ms)</label>
+        <div class="slider-control">
+          <input type="range" id="release" min="10" max="1000" step="10" value="250">
+          <span class="slider-value" id="release-value">250 ms</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="output-gain">Output Gain (dB)</label>
+        <div class="slider-control">
+          <input type="range" id="output-gain" min="-10" max="10" step="0.5" value="0">
+          <span class="slider-value" id="output-gain-value">0 dB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meters -->
+    <div class="settings-group">
+      <div class="meters-container">
+        <div>
+          <label>Output Level</label>
+          <div class="level-meter">
+            <div class="meter-bar" id="meter-bar"></div>
+            <div class="meter-scale">
+              <!-- Scale marks will be added dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <div class="meter-spacer"></div>
+
+        <div>
+          <label>Reduction</label>
+          <div class="reduction-meter">
+            <div class="reduction-bar" id="reduction-bar"></div>
+            <div class="reduction-scale">
+              <!-- Scale marks will be added dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="reset-button" class="btn-reset">Reset to Default Settings</button>
+
+    <div class="footer">
+      Easy Volume Compressor v1.0
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

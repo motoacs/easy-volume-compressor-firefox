@@ -1,0 +1,23 @@
+{
+  "name": "easy-volume-compressor-firefox",
+  "version": "1.0.0",
+  "description": "Firefox addon that compresses and equalizes audio volume across all media elements",
+  "main": "index.js",
+  "scripts": {
+    "build": "web-ext build -s src/ -a dist/",
+    "start": "web-ext run -s src/",
+    "lint": "web-ext lint -s src/"
+  },
+  "keywords": [
+    "firefox-addon",
+    "audio",
+    "compression",
+    "volume",
+    "equalizer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "web-ext": "^7.6.2"
+  }
+}

@@ -1,0 +1,329 @@
+/**
+ * Easy Volume Compressor - Popup Styles
+ */
+:root {
+  --main-color: #4a4a9e;
+  --hover-color: #5e5ebd;
+  --active-color: #3a3a7e;
+  --text-color: #333;
+  --light-text: #f8f8f8;
+  --bg-color: #f5f5f5;
+  --panel-bg: #ffffff;
+  --border-color: #ddd;
+  --success-color: #4CAF50;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  width: 300px;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 15px;
+}
+
+h1 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: var(--main-color);
+  text-align: center;
+  font-weight: 600;
+}
+
+.power-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--panel-bg);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--main-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--main-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.settings-group {
+  background-color: var(--panel-bg);
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.slider-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-control input[type="range"] {
+  flex-grow: 1;
+}
+
+.slider-value {
+  min-width: 40px;
+  text-align: right;
+  font-size: 12px;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 5px;
+  -webkit-appearance: none;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+  border-radius: 5px;
+}
+
+input[type="range"]:hover {
+  opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--main-color);
+  cursor: pointer;
+}
+
+button {
+  background-color: var(--main-color);
+  color: var(--light-text);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+button:active {
+  background-color: var(--active-color);
+}
+
+.btn-reset {
+  background-color: #f44336;
+}
+
+.btn-reset:hover {
+  background-color: #d32f2f;
+}
+
+.level-meter {
+  width: 100%;
+  height: 30px;
+  background-color: var(--bg-color);
+  border-radius: 3px;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.meter-bar {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 0;
+  transition: width 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.level-text {
+  position: absolute;
+  right: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+}
+
+.meter-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.meter-mark {
+  position: absolute;
+  height: 8px;
+  width: 1px;
+  background-color: rgba(0,0,0,0.3);
+  bottom: 0;
+}
+
+.meter-label {
+  position: absolute;
+  font-size: 8px;
+  color: rgba(0,0,0,0.5);
+  bottom: -15px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 10px;
+  color: #777;
+  margin-top: 10px;
+}
+
+.domain-info {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.meters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Redundant .level-meter and .meter-bar definitions removed */
+
+.reduction-meter {
+  width: 100%;
+  height: 24px; /* Keep height consistent if different from original .level-meter */
+  background-color: var(--bg-color);
+  border-radius: 3px;
+  margin: 5px 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.reduction-bar {
+  height: 100%;
+  background-color: #f39c12;
+  width: 0;
+  transition: width 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Changed to flex-start for proper text alignment */
+  position: absolute;
+  right: 0; /* Position from right instead of left */
+}
+
+.level-text, .reduction-text {
+  position: absolute;
+  right: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+}
+
+.meter-scale, .reduction-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.meter-mark, .reduction-mark {
+  position: absolute;
+  height: 6px;
+  width: 1px;
+  background-color: rgba(0,0,0,0.3);
+  bottom: 0;
+}
+
+.meter-label, .reduction-label {
+  position: absolute;
+  font-size: 8px;
+  color: rgba(0,0,0,0.5);
+  bottom: -15px;
+}
+
+.meter-spacer {
+  height: 1px;
+}
